@@ -7,18 +7,7 @@
       <title>CSCI435-HWl;sdfv;ldfkdl;f8</title>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
       
-   <script>
-  angular.module('TableFilterApp', [])
-	  .controller('TableFilterController', function($scope, $http) {
-      $scope.inputValue = "";
-	  
-	  $http.get('class.json')
-	  .then(function(res){
-	    $scope.apps = res.data;
-	  });
-     });
 
-  </script>
    </head>
    <body ng-app="TableFilterApp" ng-controller="TableFilterController">
 
@@ -40,6 +29,19 @@
 </table>
 
    </body>
+	
+	   <script>
+  angular.module('TableFilterApp', [])
+	  .controller('TableFilterController', function($scope, $http) {
+      $scope.inputValue = "";
+	  
+	  $http.get('class.json')
+	  .then(function(res){
+	    $scope.apps = res.data;
+	  });
+     });
+
+  </script>
 
 
 </html>
