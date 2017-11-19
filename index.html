@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport"
+         content="width=device-width, initial-scale=1, user-scalable=yes">
+      <title>CSCI435-HWl;sdfv;ldfkdl;f8</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+      <base href="file:///Users/Tyler/Desktop/CS435-HW8-master-da0155059ec3c4a755bdfda60548614fc0971445">
+   </head>
+   <body ng-app="TableFilterApp" ng-controller="TableFilterController">
+
+   	<input type='text' ng-model='inputValue'> Name: {{inputValue}}
+
+   	<table>
+<tr>
+  <th>CRN</th>
+  <th>Course ID</th>
+</tr>
+<tr>
+  <td><input ng-model="f.crn"></td>
+  <td><input ng-model="f.courseID"></td>
+</tr>
+<tr ng-repeat="a in apps | filter:f">
+  <td>{{a.crn}}</td>
+  <td>{{a.courseID}}</td>
+  <td>{{a.title}}</td>
+</tr>
+</table>
+
+   </body>
+
+   <script>
+  angular.module('TableFilterApp', [])
+	  .controller('TableFilterController', function($scope) {
+      $scope.inputValue = "";
+
+      $http.jsonp('https://s3.amazonaws.com/webdevhw/class.json')
+        .success(function(data){
+        $scope.apps = data.found);
+    });
+
+ 
+
+      
+     });
+
+  </script>
+
+
+</html>
