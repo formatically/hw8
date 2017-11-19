@@ -32,17 +32,13 @@
 
    <script>
   angular.module('TableFilterApp', [])
-	  .controller('TableFilterController', function($scope) {
+	  .controller('TableFilterController', function($scope, $http) {
       $scope.inputValue = "";
-
-      $http.jsonp('https://s3.amazonaws.com/webdevhw/class.json')
-        .success(function(data){
-        $scope.apps = data.found);
-    });
-
- 
-
-      
+	  
+	  $http.get('class.json')
+	  .then(function(res){
+	    $scope.apps = res.data;
+	  }
      });
 
   </script>
